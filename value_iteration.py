@@ -38,3 +38,8 @@ def value_iteration(mdp, epsilon=1e-6):
             break
 
     return V, n_iter, P, R
+
+def extract_policy(V, P, R, gamma):
+    Q = np.sum(P * (R + gamma * V), axis=2)
+    policy = np.argmax(Q, axis=1)
+    return policy
